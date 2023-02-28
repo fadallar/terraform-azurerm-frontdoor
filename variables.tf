@@ -22,8 +22,8 @@ variable "stack" {
   description = "Project stack name."
   type        = string
   validation {
-    condition     = var.custom_name == "" || can(regex("^[a-z0-9]([a-z0-9-]*[a-z0-9])?$", var.custom_name))
-    error_message = "Invalid variable: ${var.custom_name}. Variable name must start with a lowercase letter, end with an alphanumeric lowercase character, and contain only lowercase letters, digits, or a dash (-)."
+    condition     = var.stack == "" || can(regex("^[a-z0-9]([a-z0-9-]*[a-z0-9])?$", var.stack))
+    error_message = "Invalid variable: ${var.stack}. Variable name must start with a lowercase letter, end with an alphanumeric lowercase character, and contain only lowercase letters, digits, or a dash (-)."
   }
 }
 
@@ -49,13 +49,13 @@ variable "response_timeout_seconds" {
 
 variable "secrets_list" {
   description = "List of secrets. Secrests are defined as a map with two kyes:  name and certificate_id.  Certificate Id is Key Vault Certificate Id"
-  type        = list(object)
+  type        = list(map)
   default     = null
 }
 
 variable "endpoints_list" {
   description = "List of endpoints. Endpoints are defined as a map with two keys: name and enabled. enabled is a boolean"
-  type        = list(object)
+  type        = list(map)
   default     = null
   ### TO-DO Validate Endpoint name
 }
