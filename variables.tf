@@ -49,13 +49,13 @@ variable "response_timeout_seconds" {
 
 variable "secrets_list" {
   description = "List of secrets. Secrests are defined as a map with two kyes:  name and certificate_id.  Certificate Id is Key Vault Certificate Id"
-  type        = list(map)
+  type        = list(map(string))
   default     = null
 }
 
 variable "endpoints_list" {
   description = "List of endpoints. Endpoints are defined as a map with two keys: name and enabled. enabled is a boolean"
-  type        = list(map)
+  type        = list(map(string))
   default     = null
   ### TO-DO Validate Endpoint name
 }
