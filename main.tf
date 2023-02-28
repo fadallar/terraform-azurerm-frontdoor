@@ -9,8 +9,8 @@ resource "azurerm_cdn_frontdoor_profile" "this" {
 }
 
 resource "azurerm_cdn_frontdoor_secret" "this" {
-  for_each                 = var.secrets_list != null ? var.secrets_list : []
-  name                     = each.value.name
+  for_each                 = { for secret in var.secrets_list : secret.name => secret }
+  name                     = each.name
   cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.this.id
 
   secret {
@@ -21,9 +21,9 @@ resource "azurerm_cdn_frontdoor_secret" "this" {
 }
 
 resource "azurerm_cdn_frontdoor_endpoint" "this" {
-  for_each                 = var.endpoints_list != null ? var.endpoints_list : []
-  name                     = each.value.name
-  enabled                  = each.value.enabled
+  for_each                 = { for endpoint in var.endpoints_list : endpoint.name => endpoint }
+  name                     = each.name
+  enabled                  = each.enabled
   cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.this.id
   tags                     = merge(var.default_tags, var.extra_tags)
 
