@@ -1,7 +1,7 @@
 resource "azurerm_cdn_frontdoor_profile" "this" {
   name                     = local.name
   resource_group_name      = var.resource_group_name
-  sku_name                 = var.sku
+  sku_name                 = var.sku_name
   response_timeout_seconds = var.response_timeout_seconds
 
   tags = merge(var.default_tags, var.extra_tags)
