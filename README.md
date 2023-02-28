@@ -4,11 +4,9 @@
 This Terraform module creates an Azure Front Door Profile
 
   - It applies diagnostics settings  
-  - It configures a private endpoint if private access is enabled
-  - It configures user managed identities scoped at the Appconfiguration Store
+  - It configures FrontDoor Endpoints
+  - It configures FrontDoor Secrets
 
-> Important  
-> Ensures you have the required permissions to associate a role to a user managed identity  
 
 <!-- BEGIN_TF_DOCS -->
 
