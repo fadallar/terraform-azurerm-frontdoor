@@ -15,6 +15,6 @@ output "secrets_id" {
 
 output "endpoints_host_name" {
   description = "List of endpoint host name"
-  value       = { for endpoint in azurerm_cdn_frontdoor_endpoint.this : endpoint.id => endpoint.host }
+  value       = { for endpoint in azurerm_cdn_frontdoor_endpoint.this : endpoint.id => endpoint.host_name }
 }
 
