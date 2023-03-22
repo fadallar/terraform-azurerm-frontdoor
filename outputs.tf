@@ -18,3 +18,8 @@ output "endpoints_host_name" {
   value       = { for endpoint in azurerm_cdn_frontdoor_endpoint.this : endpoint.id => endpoint.host_name }
 }
 
+output "name" {
+  description = "Frontdoor Profile Name"
+  value       = azurerm_cdn_frontdoor_profile.this.name
+}
+
